@@ -1,11 +1,11 @@
 <template>
   <div class="circle">
     <p>Circle</p>
-    <!-- <TriangleItem></TriangleItem> -->
-    <!-- <RectItem></RectItem> -->
     <button @click="count++">
       {{ count }}
     </button>
+    <p>computed: {{ countListen }}</p>
+    <p>watch {{ countWatcher }}</p>
   </div>
 </template>
 
@@ -17,7 +17,34 @@ export default {
       count: 0,
       graph,
       graphCN,
+      countWatcher: 0,
     };
+  },
+  computed: {
+    countListen() {
+      console.log(
+        "%c%s %c%s: computed",
+        "color: aqua",
+        graph[3],
+        "color: black",
+        graphCN[3],
+        this.count
+      );
+      return this.count;
+    },
+  },
+  watch: {
+    count() {
+      console.log(
+        "%c%s %c%s: watch",
+        "color: aqua",
+        graph[3],
+        "color: black",
+        graphCN[3],
+        this.count
+      );
+      this.countWatcher = this.count;
+    },
   },
   beforeCreate() {
     console.log(
