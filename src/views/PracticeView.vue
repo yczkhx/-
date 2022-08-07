@@ -4,7 +4,7 @@
     <div class="content">
     <RectItem v-if="visible"></RectItem>
     </div>
-
+    <p>点击组件标题即可切换其子组件展示状态</p>
   </div>
 </template>
 

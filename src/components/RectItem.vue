@@ -1,10 +1,10 @@
 <template>
   <div class="rect">
-    <p  @click="visible = !visible">Rect</p>
-    <button @click="count++">
-      RectCount1 {{ count }}
-    </button>
-    <p>RectCount2 {{rectCount}}</p>
+    <p @click="visible = !visible">Rect</p>
+    <button @click="count++">RectCount1 {{ count }}</button>
+    <p>computed: {{ countListen }}</p>
+    <p>watch: {{ countWatcher }}</p>
+    <p>RectCount2: {{ rectCount }}</p>
     <div class="children">
       <SquareItem v-if="visible"></SquareItem>
       <CircleItem v-if="visible" :rectCount.sync="rectCount"></CircleItem>
@@ -14,20 +14,54 @@
 
 <script>
 import CircleItem from "./CircleItem.vue";
+import SquareItem from "./SquareItem.vue";
 import { graph, graphCN } from "./dic";
 export default {
   components: {
-    SquareItem: () => import("./SquareItem.vue"),
     CircleItem,
+    SquareItem,
+    // 下面这种写法会在父组件 mounted 后，再加载子组件
+    // beforeUpdate -> 子组件渲染 -> updated
+    // 与 Vue 的渲染机制有关（？
+    // 完成第一次加载后，后续切换页面等重新渲染，生命周期关系同预期则一致
+    // SquareItem: () => import("./SquareItem.vue"),
+    // CircleItem: () => import('./CircleItem.vue'),
   },
   data() {
     return {
       count: 0,
       rectCount: 0,
+      countWatcher: 0,
       graph,
       graphCN,
       visible: true,
     };
+  },
+  computed: {
+    countListen() {
+      console.log(
+        "%c%s %c%s: computed",
+        "color: coral",
+        graph[0],
+        "color: black",
+        graphCN[0],
+        this.rectCount
+      );
+      return this.rectCount;
+    },
+  },
+  watch: {
+    rectCount() {
+      console.log(
+        "%c%s %c%s: watch",
+        "color: coral",
+        graph[0],
+        "color: black",
+        graphCN[0],
+        this.rectCount
+      );
+      this.countWatcher = this.rectCount;
+    },
   },
   beforeCreate() {
     console.log(
@@ -113,6 +147,9 @@ export default {
 </script>
 
 <style scoped>
+* {
+  margin: 10px;
+}
 .rect {
   width: 800px;
   height: 600px;

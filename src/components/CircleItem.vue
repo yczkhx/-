@@ -5,9 +5,9 @@
       CircleCount {{ count }}
     </button>
     <button @click="handleClick">Rect Count</button>
-    <p>computed: {{ countListen }}</p>
-    <p>watch {{ countWatcher }}</p>
-    <p>RectCount2 {{rectCount}}</p>
+    <p>computed: {{ countListen }} Rect: {{countListenR}}</p>
+    <p>watch: {{ countWatcher }} Rect: {{countWatcherR}}</p>
+    <p>RectCount2: {{rectCount}}</p>
   </div>
 </template>
 
@@ -23,6 +23,7 @@ export default {
       graph,
       graphCN,
       countWatcher: 0,
+      countWatcherR: 0,
     };
   },
   computed: {
@@ -37,6 +38,17 @@ export default {
       );
       return this.count;
     },
+    countListenR() {
+      console.log(
+        "%c%s %c%s: computed RectCount",
+        "color: aqua",
+        graph[3],
+        "color: black",
+        graphCN[3],
+        this.rectCount
+      );
+      return this.rectCount;
+    },
   },
   watch: {
     count() {
@@ -49,6 +61,17 @@ export default {
         this.count
       );
       this.countWatcher = this.count;
+    },
+    rectCount() {
+            console.log(
+        "%c%s %c%s: watch RectCount",
+        "color: aqua",
+        graph[3],
+        "color: black",
+        graphCN[3],
+        this.rectCount
+      );
+      this.countWatcherR = this.rectCount;
     },
   },
   beforeCreate() {
