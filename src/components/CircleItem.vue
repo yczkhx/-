@@ -2,16 +2,21 @@
   <div class="circle">
     <p>Circle</p>
     <button @click="count++">
-      {{ count }}
+      CircleCount {{ count }}
     </button>
+    <button @click="handleClick">Rect Count</button>
     <p>computed: {{ countListen }}</p>
     <p>watch {{ countWatcher }}</p>
+    <p>RectCount2 {{rectCount}}</p>
   </div>
 </template>
 
 <script>
 import { graph, graphCN } from "./dic";
 export default {
+  props: {
+    rectCount: Number,
+  },
   data() {
     return {
       count: 0,
@@ -126,10 +131,18 @@ export default {
       "color: red"
     );
   },
+  methods: {
+    handleClick() {
+      this.$emit('update:rectCount', this.rectCount + 1);
+    }
+  },
 };
 </script>
 
 <style scoped>
+* {
+  margin: 5px;
+}
 .circle {
   width: 300px;
   height: 300px;

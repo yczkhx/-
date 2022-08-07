@@ -2,11 +2,12 @@
   <div class="rect">
     <p  @click="visible = !visible">Rect</p>
     <button @click="count++">
-      {{ count }}
+      RectCount1 {{ count }}
     </button>
+    <p>RectCount2 {{rectCount}}</p>
     <div class="children">
       <SquareItem v-if="visible"></SquareItem>
-      <CircleItem v-if="visible"></CircleItem>
+      <CircleItem v-if="visible" :rectCount.sync="rectCount"></CircleItem>
     </div>
   </div>
 </template>
@@ -22,6 +23,7 @@ export default {
   data() {
     return {
       count: 0,
+      rectCount: 0,
       graph,
       graphCN,
       visible: true,
