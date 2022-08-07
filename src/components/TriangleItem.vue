@@ -4,37 +4,32 @@
   </div>
 </template>
 <script>
+import { graph, graphCN } from './dic';
 export default {
   beforeCreate() {
-    console.log('Triangle: beforeCreate');
+    console.log("%c%s %c%s: %cbeforeCreate", 'color: chocolate', graph[2], 'color: black', graphCN[2], 'color: green');
   },
   created() {
-    console.log('Triangle: created');
-
+    console.log("%c%s %c%s: %ccreated", 'color: chocolate', graph[2], 'color: black', graphCN[2], 'color: green');
   },
   beforeMount() {
-    console.log('Triangle: beforeMount');
-
+    console.log("%c%s %c%s: %cbeforeMount", 'color: chocolate', graph[2], 'color: black', graphCN[2], 'color: brown');
   },
   mounted() {
-    console.log('Triangle: mounted');
+    console.log("%c%s %c%s: %cmounted", 'color: chocolate', graph[2], 'color: black', graphCN[2], 'color: brown');
 
   },
   beforeUpdate() {
-    console.log('Triangle: beforeUpdate');
-
+    console.log("%c%s %c%s: %cbeforeUpdate", 'color: chocolate', graph[2], 'color: black', graphCN[2], 'color: green');
   },
   updated() {
-    console.log('Triangle: updated');
-
+    console.log("%c%s %c%s: %cupdated", 'color: chocolate', graph[2], 'color: black', graphCN[2], 'color: green');
   },
   beforeDestroy() {
-    console.log('Triangle: beforeDestroy');
-
+    console.log("%c%s %c%s: %cbeforeDestroy", 'color: chocolate', graph[2], 'color: black', graphCN[2], 'color: red');
   },
   destroyed() {
-    console.log('Triangle: destroyed');
-
+    console.log("%c%s %c%s: %cdestroyed", 'color: chocolate', graph[2], 'color: black', graphCN[2], 'color: red');
   },
 }
 </script>

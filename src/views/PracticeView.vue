@@ -1,8 +1,8 @@
 <template>
   <div>
-    Practice2
+    <p @click="visible = !visible">Practice2</p>
     <div class="content">
-    <RectItem></RectItem>
+    <RectItem v-if="visible"></RectItem>
     </div>
 
   </div>
@@ -13,6 +13,11 @@
 import RectItem from '@/components/RectItem.vue';
 export default {
   components: { RectItem,},
+  data() {
+    return {
+      visible: true,
+    }
+  }
 }
 </script>
 

@@ -1,45 +1,45 @@
 <template>
   <div class="square">
-    Square
+    <p  @click="visible = !visible">Square</p>
     <div class="children">
-      <TriangleItem></TriangleItem>
+      <TriangleItem v-if="visible"></TriangleItem>
     </div>
   </div>
 </template>
 <script>
 import TriangleItem from "./TriangleItem.vue";
+import { graph, graphCN } from './dic';
 export default {
   components: { TriangleItem },
-    beforeCreate() {
-    console.log('Square: beforeCreate');
+  data() {
+    return {
+      visible: true,
+    }
+  },
+  beforeCreate() {
+    console.log("%c%s %c%s: %cbeforeCreate", 'color: gold', graph[1], 'color: black', graphCN[1], 'color: green');
   },
   created() {
-    console.log('Square: created');
-
+    console.log("%c%s %c%s: %ccreated", 'color: gold', graph[1], 'color: black', graphCN[1], 'color: green');
   },
   beforeMount() {
-    console.log('Square: beforeMount');
-
+    console.log("%c%s %c%s: %cbeforeMount", 'color: gold', graph[1], 'color: black', graphCN[1], 'color: brown');
   },
   mounted() {
-    console.log('Square: mounted');
+    console.log("%c%s %c%s: %cmounted", 'color: gold', graph[1], 'color: black', graphCN[1], 'color: brown');
 
   },
   beforeUpdate() {
-    console.log('Square: beforeUpdate');
-
+    console.log("%c%s %c%s: %cbeforeUpdate", 'color: gold', graph[1], 'color: black', graphCN[1], 'color: green');
   },
   updated() {
-    console.log('Square: updated');
-
+    console.log("%c%s %c%s: %cupdated", 'color: gold', graph[1], 'color: black', graphCN[1], 'color: green');
   },
   beforeDestroy() {
-    console.log('Square: beforeDestroy');
-
+    console.log("%c%s %c%s: %cbeforeDestroy", 'color: gold', graph[1], 'color: black', graphCN[1], 'color: red');
   },
   destroyed() {
-    console.log('Square: destroyed');
-
+    console.log("%c%s %c%s: %cdestroyed", 'color: gold', graph[1], 'color: black', graphCN[1], 'color: red');
   },
 };
 </script>

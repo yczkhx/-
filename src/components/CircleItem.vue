@@ -1,44 +1,103 @@
 <template>
   <div class="circle">
-    Circle
+    <p>Circle</p>
     <!-- <TriangleItem></TriangleItem> -->
     <!-- <RectItem></RectItem> -->
-
+    <button @click="count++">
+      {{ count }}
+    </button>
   </div>
 </template>
 
 <script>
+import { graph, graphCN } from "./dic";
 export default {
+  data() {
+    return {
+      count: 0,
+      graph,
+      graphCN,
+    };
+  },
   beforeCreate() {
-    console.log('Circle: beforeCreate');
+    console.log(
+      "%c%s %c%s: %cbeforeCreate",
+      "color: aqua",
+      graph[3],
+      "color: black",
+      graphCN[3],
+      "color: green"
+    );
   },
   created() {
-    console.log('Circle: created');
-
+    console.log(
+      "%c%s %c%s: %ccreated",
+      "color: aqua",
+      graph[3],
+      "color: black",
+      graphCN[3],
+      "color: green"
+    );
   },
   beforeMount() {
-    console.log('Circle: beforeMount');
-
+    console.log(
+      "%c%s %c%s: %cbeforeMount",
+      "color: aqua",
+      graph[3],
+      "color: black",
+      graphCN[3],
+      "color: brown"
+    );
   },
   mounted() {
-    console.log('Circle: mounted');
-
+    console.log(
+      "%c%s %c%s: %cmounted",
+      "color: aqua",
+      graph[3],
+      "color: black",
+      graphCN[3],
+      "color: brown"
+    );
   },
   beforeUpdate() {
-    console.log('Circle: beforeUpdate');
-
+    console.log(
+      "%c%s %c%s: %cbeforeUpdate",
+      "color: aqua",
+      graph[3],
+      "color: black",
+      graphCN[3],
+      "color: green"
+    );
   },
   updated() {
-    console.log('Circle: updated');
-
+    console.log(
+      "%c%s %c%s: %cupdated",
+      "color: aqua",
+      graph[3],
+      "color: black",
+      graphCN[3],
+      "color: green"
+    );
   },
   beforeDestroy() {
-    console.log('Circle: beforeDestroy');
-
+    console.log(
+      "%c%s %c%s: %cbeforeDestroy",
+      "color: aqua",
+      graph[3],
+      "color: black",
+      graphCN[3],
+      "color: red"
+    );
   },
   destroyed() {
-    console.log('Circle: destroyed');
-
+    console.log(
+      "%c%s %c%s: %cdestroyed",
+      "color: aqua",
+      graph[3],
+      "color: black",
+      graphCN[3],
+      "color: red"
+    );
   },
 };
 </script>
