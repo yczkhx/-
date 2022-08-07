@@ -14,7 +14,38 @@ export default {
   components: {
     SquareItem: ()=> import('./SquareItem.vue'),
     CircleItem,
-  }
+  },
+  beforeCreate() {
+    console.log('Rect: beforeCreate');
+  },
+  created() {
+    console.log('Rect: created');
+
+  },
+  beforeMount() {
+    console.log('Rect: beforeMount');
+
+  },
+  mounted() {
+    console.log('Rect: mounted');
+
+  },
+  beforeUpdate() {
+    console.log('Rect: beforeUpdate');
+
+  },
+  updated() {
+    console.log('Rect: updated');
+
+  },
+  beforeDestroy() {
+    console.log('Rect: beforeDestroy');
+
+  },
+  destroyed() {
+    console.log('Rect: destroyed');
+
+  },
 }
 </script>
 
